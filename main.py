@@ -1,4 +1,4 @@
-import os
+
 from flask import Flask, render_template, redirect, request, flash
 import json
 
@@ -15,7 +15,7 @@ def login():
     nome = request.form.get('nome')
     senha = request.form.get('senha')
 
-    with open('faculdade/html_em_python/usuarios.json') as usuario_temporaria:
+    with open('D:/PagAutentc_python/usuarios.json') as usuario_temporaria:
         usuarios = json.load(usuario_temporaria)
         cont = 0    
         for usuario in usuarios:

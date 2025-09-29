@@ -30,9 +30,33 @@ def login():
             if cont >= len(usuarios):
                 flash('USUARIO INVALIDO')
                 return redirect('/')
+            
+@app.route('/cadastro_user', methods=['POST'])
+def cadastro_user():
+    user = []
+    nome = request.form.get('nome')
+    senha = request.form.get('senha')
+    user = [
+        {
+            'nome': nome,
+            'senha': senha
+        }
+    ]
 
-    print(usuarios)
-    return "Login processado!"
+    with open('D:/PagAutentc_python/usuarios.json') as usuario_temporaria:
+        usuarios = json.load(usuario_temporaria)
+
+    novo_user = usuarios + user  
+
+    with open('D:/PagAutentc_python/usuarios.json', 'w') as cadastro_temp:
+        json.dump(novo_user, cadastro_temp, indent=4)
+
+    return render_template('admin.html')
+    
+
+
+
+
 
 
 if __name__ in "__main__":

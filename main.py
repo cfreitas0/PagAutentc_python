@@ -9,6 +9,7 @@ app.config['SECRET_KEY'] = 'DOM123'
 def home():
     return render_template('login.html')
 
+
 @app.route('/login', methods=['POST'])
 def login():
 
@@ -20,6 +21,9 @@ def login():
         cont = 0    
         for usuario in usuarios:
             cont += 1
+            if nome == 'adm' and senha == '222':
+                return redirect('admin.html')
+            
             if usuario["nome"] == nome and usuario["senha"] == senha:
                 return render_template('usuario.html')
             

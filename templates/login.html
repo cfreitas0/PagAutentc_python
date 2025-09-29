@@ -8,12 +8,13 @@
 </head>
 <body>
 
-    {% set menssagem = get_flashed_messages() %}
-    {% if menssagem %}
-        <div class="flash_alerta">
-            {{menssagem[0]}}
-        </div>
-    {% endif %}
+    {% with mensagens = get_flashed_messages() %}
+        {% if mensagens %}
+            <div class="flash_alerta">
+                {{menssagem[0]}}
+            </div>
+        {% endif %}
+    {% endwith %}
 
     <div id="form_fundo">
         <h1>LOGIN</h1>

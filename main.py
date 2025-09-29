@@ -1,9 +1,9 @@
 
-from flask import Flask, render_template, redirect, request, flash
+from flask import Flask, render_template, redirect, request, flash, url_for
 import json
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'DOM123'
+app.config['SECRET_KEY'] = 'cesar'
 
 @app.route('/')
 def home():
@@ -22,7 +22,7 @@ def login():
         for usuario in usuarios:
             cont += 1
             if nome == 'adm' and senha == '222':
-                return redirect('admin.html')
+                return render_template('admin.html')
             
             if usuario["nome"] == nome and usuario["senha"] == senha:
                 return render_template('usuario.html')

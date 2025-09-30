@@ -5,13 +5,25 @@ import json
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'cesar'
 
+logado = False
+
 @app.route('/')
 def home():
+    global logado
+    logado = False
     return render_template('login.html')
 
+@app.route('/adm')
+def adm():
+    if logado == True:
+        return render_template('admin.html')
+    if logado == False:
+        return redirect('/')
 
 @app.route('/login', methods=['POST'])
 def login():
+
+    global logado
 
     nome = request.form.get('nome')
     senha = request.form.get('senha')
@@ -22,7 +34,8 @@ def login():
         for usuario in usuarios:
             cont += 1
             if nome == 'adm' and senha == '222':
-                return render_template('admin.html')
+                logado = True
+                return redirect('/adm')
             
             if usuario["nome"] == nome and usuario["senha"] == senha:
                 return render_template('usuario.html')
@@ -51,10 +64,8 @@ def cadastro_user():
     with open('D:/PagAutentc_python/usuarios.json', 'w') as cadastro_temp:
         json.dump(novo_user, cadastro_temp, indent=4)
 
-    return render_template('admin.html')
+    return redirect('/adm')
     
-
-
 
 
 

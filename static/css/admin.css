@@ -11,5 +11,11 @@
 
 div#form_fundo{
     margin: 2% 50% 5% 3%;
-    margin-top: 180px;
+    position: absolute;
+}
+
+div#form_fundo.lista_users{
+    margin: 2% 5% 5% 51%;
+    
+
 }

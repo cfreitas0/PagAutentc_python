@@ -16,7 +16,9 @@ def home():
 @app.route('/adm')
 def adm():
     if logado == True:
-        return render_template('admin.html')
+        with open('D:/proj_login/usuarios.json') as usuario_temporaria:
+            usuarios = json.load(usuario_temporaria)
+        return render_template('admin.html', usuarios=usuarios)
     if logado == False:
         return redirect('/')
 
@@ -28,7 +30,7 @@ def login():
     nome = request.form.get('nome')
     senha = request.form.get('senha')
 
-    with open('D:/PagAutentc_python/usuarios.json') as usuario_temporaria:
+    with open('D:/proj_login/usuarios.json') as usuario_temporaria:
         usuarios = json.load(usuario_temporaria)
         cont = 0    
         for usuario in usuarios:

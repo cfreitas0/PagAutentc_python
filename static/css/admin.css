@@ -16,6 +16,14 @@ div#form_fundo{
 
 div#form_fundo.lista_users{
     margin: 2% 5% 5% 51%;
-    
+}
 
+#form_frente.lista_users{
+    text-align: left;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+ul {
+    list-style-type: none;
 }

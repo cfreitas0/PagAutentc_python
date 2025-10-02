@@ -22,5 +22,9 @@
     {
         "nome": "nike",
         "senha": "123"
+    },
+    {
+        "nome": "vitoria",
+        "senha": "123"
     }
 ]

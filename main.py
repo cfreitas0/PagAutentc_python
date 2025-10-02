@@ -18,6 +18,7 @@ def adm():
     if logado == True:
         with open('D:/proj_login/usuarios.json') as usuario_temporaria:
             usuarios = json.load(usuario_temporaria)
+
         return render_template('admin.html', usuarios=usuarios)
     if logado == False:
         return redirect('/')
@@ -58,12 +59,12 @@ def cadastro_user():
         }
     ]
 
-    with open('D:/PagAutentc_python/usuarios.json') as usuario_temporaria:
+    with open('D:/proj_login/usuarios.json') as usuario_temporaria:
         usuarios = json.load(usuario_temporaria)
 
     novo_user = usuarios + user  
 
-    with open('D:/PagAutentc_python/usuarios.json', 'w') as cadastro_temp:
+    with open('D:/proj_login/usuarios.json', 'w') as cadastro_temp:
         json.dump(novo_user, cadastro_temp, indent=4)
 
     return redirect('/adm')

@@ -39,11 +39,18 @@
     <div id="form_fundo" class="lista_users">
         <h2>USUARIOS CADASTRADOS</h2>
         <h2>DomDev</h2>
-        <div id="form_frente">
+        <div id="form_frente" class="lista_users">
             {% if usuarios %}
-
+                {% for c in usuarios %}
+                    <ul>
+                        ==================
+                        <li>NOME: {{c['nome']}}</li>
+                        <li>SENHA: {{c['senha']}}</li>
+                        ==================
+                    </ul>
+                {% endfor %}
             {% else %}
-            <h2>usuario inesistente</h2>
+            <h2>lista vázia! </h2>
             {% endif %}
         </div>
     </div>

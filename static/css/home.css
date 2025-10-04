@@ -9,7 +9,7 @@ body{
 
 .flash_alerta{
     background-color: rgb(241, 7, 7);
-    font-size: 20px;
+    font-size: 23px;
     border-radius: 20px;
     font-weight: bold;
     text-align: center;
@@ -50,8 +50,8 @@ input{
 }
 
 button{
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 21px;
+    font-weight:normal;
     border-radius: 10px;
     background-color: rgb(31, 32, 34);
     color: white;
@@ -60,7 +60,15 @@ button{
 button:hover{
     background-color: rgb(131, 126, 126);
     color: rgb(255, 252, 252);
-    font-size: 25px;
-    transition: 0.5s;
+    font-size: 22px;
+    transition: 0.4s;
     cursor: pointer;
+}
+
+button.button_excl{
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    width: 70px;
+    margin: 0 auto;
 }

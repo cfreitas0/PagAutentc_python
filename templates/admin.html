@@ -30,7 +30,7 @@
                     <span></span>
                     <span></span>
                     <span></span>
-                    <span></span>CADASTRAR
+                    <span></span>Cadastrar
                 </button>
             </form>
         </div>
@@ -42,12 +42,17 @@
         <div id="form_frente" class="lista_users">
             {% if usuarios %}
                 {% for c in usuarios %}
+                <form action="/delet_user" method="post">
                     <ul>
+                        <input type="hidden" name="del_user" value="{{c}}">
                         ==================
                         <li>NOME: {{c['nome']}}</li>
                         <li>SENHA: {{c['senha']}}</li>
                         ==================
                     </ul>
+                    <button class="button_excl" type="submit">Excluir</button>
+                </form>    
+
                 {% endfor %}
             {% else %}
             <h2>lista vázia! </h2>

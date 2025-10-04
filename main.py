@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, flash, url_for
 import json
 import ast
 import os
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'cesar'
 
@@ -98,7 +99,9 @@ def uplaod():
 
     arquivo = request.files.get('documento')
     nome_arquiv = arquivo.filename.replace('','_')
-    arquivo.save(os.path.join('D:/proj_login/arquivos', nome_arquiv))
+    pasta_destino = 'D:/proj_login/arquivos'
+    os.makedirs(pasta_destino, exist_ok=True)
+    arquivo.save(os.path.join(pasta_destino, nome_arquiv))
 
     return redirect('/adm')
 

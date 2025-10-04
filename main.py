@@ -88,7 +88,7 @@ def delet_user():
                 with open('D:/proj_login/usuarios.json', 'w') as del_user:
                     json.dump(user_json, del_user, indent=4)
 
-    flash(F'{nome}Excluido com Sucesso!')
+    flash(F'{nome}: Excluido com Sucesso!')
     return redirect('/adm')
 
 

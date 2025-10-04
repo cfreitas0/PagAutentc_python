@@ -98,11 +98,12 @@ def uplaod():
     logado = True
 
     arquivo = request.files.get('documento')
-    nome_arquiv = arquivo.filename.replace('','_')
+    nome_arquiv = arquivo.filename.replace(' ','_')
     pasta_destino = 'D:/proj_login/arquivos'
     os.makedirs(pasta_destino, exist_ok=True)
     arquivo.save(os.path.join(pasta_destino, nome_arquiv))
 
+    flash('Arquivo salvo com Sucesso!')
     return redirect('/adm')
 
 

@@ -36,6 +36,13 @@ div#form_frente{
     padding: 20px;
 }
 
+
+div#form_fundo.upload{
+    margin-top: 370px;
+    width: 450px;
+}
+
+
 label{
     font-size: 25px;
     font-weight: bold;

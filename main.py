@@ -2,7 +2,7 @@
 from flask import Flask, render_template, redirect, request, flash, url_for
 import json
 import ast
-
+import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'cesar'
 
@@ -90,6 +90,19 @@ def delet_user():
 
     flash(F'{nome}: Excluido com Sucesso!')
     return redirect('/adm')
+
+@app.route('/upload', methods=['POST'])
+def uplaod():
+    global logado
+    logado = True
+
+    arquivo = request.files.get('documento')
+    nome_arquiv = arquivo.filename.replace('','_')
+    arquivo.save(os.path.join('D:/proj_login/arquivos', nome_arquiv))
+
+    return redirect('/adm')
+
+
 
 
 if __name__ in "__main__":

@@ -22,6 +22,9 @@ div#form_fundo.lista_users{
     text-align: left;
     font-weight: bold;
     font-size: 17px;
+    overflow-y:scroll;
+    width: 300px;
+    height: 180px; ;
 }
 
 ul {

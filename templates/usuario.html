@@ -11,7 +11,7 @@
     <div id="form_fundo">
         <h2> DOWNLOAD DE ARQUIVOS</h2>
         <div id="form_frente">
-            {% arquivos %}
+            {% if arquivos %}
                 <form action="/download" method="post">
                     <select name="arquivosP_download" id="arquivosP_download">
                         {% for documento in arquivos %}

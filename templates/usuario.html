@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
+    <link rel="stylesheet" href="/static/css/usuario.css">
 </head>
 <body>
     
-    <h1>Logado com Sucesso!!!</h1>
+    <div id="form_fundo">
+        <h2> DOWNLOAD DE ARQUIVOS</h2>
+        <div id="form_frente">
+            {% arquivos %}
+                <form action="/download" method="post">
+                    <select name="arquivosP_download" id="arquivosP_download">
+                        {% for documento in arquivos %}
+                            <option value="{{documento}}">{{documento}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">DOWNLOAD</button>
+                </form>
+            {% else %}
+                <h2>BANCO DE DADOS VAZIO!</h2>
+            {% endif %}
+        </div>
+    </div>
 
 </body>
 </html>

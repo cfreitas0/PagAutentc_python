@@ -10,5 +10,9 @@
     {
         "nome": "vitoria",
         "senha": "123"
+    },
+    {
+        "nome": "lora",
+        "senha": "111"
     }
 ]

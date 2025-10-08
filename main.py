@@ -29,8 +29,9 @@ def adm():
     def usuarios():
         if logado == True:
             arquivo = []
-            for documento in 
-            return render_template('usuarios.html')
+            for documento in os.listdir('D:/proj_login/arquivos'):
+                arquivo.append(documento)
+            return render_template('usuarios.html', arquivos=arquivo)
         else:
             return redirect('/')
         

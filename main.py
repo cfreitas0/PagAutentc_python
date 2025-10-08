@@ -24,6 +24,8 @@ def adm():
         return render_template('admin.html', usuarios=usuarios)
     if logado == False:
         return redirect('/')
+    
+    @app.route('/usuarios')
 
 @app.route('/login', methods=['POST'])
 def login():

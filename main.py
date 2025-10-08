@@ -25,8 +25,15 @@ def adm():
     if logado == False:
         return redirect('/')
     
-    @app.route('/usuarios')
-
+    @app.route('/usuario')
+    def usuarios():
+        if logado == True:
+            arquivo = []
+            for documento in 
+            return render_template('usuarios.html')
+        else:
+            return redirect('/')
+        
 @app.route('/login', methods=['POST'])
 def login():
 
@@ -45,7 +52,9 @@ def login():
                 return redirect('/adm')
             
             if usuario["nome"] == nome and usuario["senha"] == senha:
-                return render_template('usuario.html')
+                logado = True
+                return redirect('/usuarios')
+                
             
             if cont >= len(usuarios):
                 flash('USUARIO INVALIDO')

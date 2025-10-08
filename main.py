@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, redirect, request, flash, url_for
+from flask import Flask, render_template, redirect, request, flash, url_for, send_from_directory
 import json
 import ast
 import os
@@ -120,7 +120,11 @@ def uplaod():
     flash('Arquivo salvo com Sucesso!')
     return redirect('/adm')
 
+@app.route('/download', methods=['POST'])
+def download():
+    nome_arqi = request.form.get('arquivosP_download')
 
+    return send_from_directory('arquivos', nome_arqi, as_attachment=True)
 
 
 if __name__ in "__main__":

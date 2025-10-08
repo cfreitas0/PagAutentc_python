@@ -31,7 +31,7 @@ def adm():
             arquivo = []
             for documento in os.listdir('D:/proj_login/arquivos'):
                 arquivo.append(documento)
-            return render_template('usuario.html', arquivos=arquivo)
+            return render_template('usuarios.html', arquivos=arquivo)
         else:
             return redirect('/')
         
@@ -54,7 +54,7 @@ def login():
             
             if usuario["nome"] == nome and usuario["senha"] == senha:
                 logado = True
-                return redirect('/usuario')
+                return redirect('/usuarios')
                 
             
             if cont >= len(usuarios):

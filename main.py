@@ -25,16 +25,18 @@ def adm():
     if logado == False:
         return redirect('/')
     
-    @app.route('/usuarios')
-    def usuarios():
-        if logado == True:
-            arquivo = []
-            for documento in os.listdir('D:/proj_login/arquivos'):
-                arquivo.append(documento)
-            return render_template('usuarios.html', arquivos=arquivo)
-        else:
-            return redirect('/')
+    
+@app.route('/usuarios')
+def usuarios():
+    if logado == True:
+        arquivo = []
+        for documento in os.listdir('D:/proj_login/arquivos'):
+            arquivo.append(documento)
+        return render_template('usuarios.html', arquivos=arquivo)
+    else:
+        return redirect('/')
         
+
 @app.route('/login', methods=['POST'])
 def login():
 

@@ -13,7 +13,7 @@ logado = False
 def home():
     global logado
     logado = False
-    return render_template('login.html')
+    return render_template('login.html', menssagem='')
 
 @app.route('/adm')
 def adm():

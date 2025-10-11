@@ -51,7 +51,7 @@ def login():
     if conect_BD.is_connected():
         print('conectado')
         cursor = conect_BD.cursor()
-        cursor.execute('select * from usuarios;')
+        cursor.execute('select * from usuario;')
 
         usuariosBD = cursor.fetchall
 

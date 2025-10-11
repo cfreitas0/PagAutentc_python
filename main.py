@@ -54,7 +54,6 @@ def login():
     conect_BD = mysql.connector.connect(host='localhost', database='usuarios', user='root', password='9458Cf9590&')
     cont = 0
     if conect_BD.is_connected():
-        print('conectado')
         cursor = conect_BD.cursor()
         cursor.execute('select * from users;')
 

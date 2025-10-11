@@ -19,9 +19,13 @@ def home():
 @app.route('/adm')
 def adm():
     if logado == True:
-        with open('D:/proj_login/usuarios.json') as usuario_temporaria:
-            usuarios = json.load(usuario_temporaria)
-
+        conect_BD = mysql.connector.connect(host='localhost', database='usuarios', user='root', password='9458Cf9590&')    
+        
+        if conect_BD.is_connected():
+            print('conectado')
+            cursor = conect_BD.cursor()
+            cursor.execute('select * from users;')
+            usuarios = cursor.fetchall()
         return render_template('admin.html', usuarios=usuarios)
     if logado == False:
         return redirect('/')

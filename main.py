@@ -26,6 +26,7 @@ def adm():
             cursor = conect_BD.cursor()
             cursor.execute('select * from users;')
             usuarios = cursor.fetchall()
+            print('==========')
         return render_template('admin.html', usuarios=usuarios)
     if logado == False:
         return redirect('/')

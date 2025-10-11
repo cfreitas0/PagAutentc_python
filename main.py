@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, flash, url_for, sen
 import json
 import ast
 import os
+import mysql.connector
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'cesar'
@@ -45,21 +46,30 @@ def login():
     nome = request.form.get('nome')
     senha = request.form.get('senha')
 
-    with open('D:/proj_login/usuarios.json') as usuario_temporaria:
-        usuarios = json.load(usuario_temporaria)
-        cont = 0    
-        for usuario in usuarios:
+    conect_BD = mysql.connector.connect(host='localhost', database=usuarios, user='root', password='')
+    cont = 0
+    if conect_BD.is_connected():
+        print('conectado')
+        cursor = conect_BD.cursor()
+        cursor.execute('select * from usuarios;')
+
+        usuariosBD = cursor.fetchall
+
+        for usuario in usuariosBD:
             cont += 1
+            usuario_nome = str(usuario[1])
+            usuario_senha = str(usuario[2])
+
             if nome == 'adm' and senha == '222':
                 logado = True
                 return redirect('/adm')
             
-            if usuario["nome"] == nome and usuario["senha"] == senha:
+            if usuario_nome == nome and usuario_senha == senha:
                 logado = True
                 return redirect('/usuarios')
                 
             
-            if cont >= len(usuarios):
+            if cont >= len(usuariosBD):
                 flash('USUARIO INVALIDO')
                 return redirect('/')
             

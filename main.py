@@ -102,16 +102,18 @@ def cadastro_user():
 def delet_user():
     global logado
     logado = True
-    usuario = request.form.get('del_user')
-    user_dict = ast.literal_eval(usuario)
-    nome = user_dict['nome']
-    with open('D:/proj_login/usuarios.json') as usuario_temporaria:
-        user_json = json.load(usuario_temporaria)
-        for c in user_json:
-            if c == user_dict:
-                user_json.remove(user_dict)
-                with open('D:/proj_login/usuarios.json', 'w') as del_user:
-                    json.dump(user_json, del_user, indent=4)
+    nome = request.form.get('nome')
+    usuarioID = request.form.get('del_user')
+    conect_BD = mysql.connector.connect(host='localhost', database='usuarios', user='root', password='9458Cf9590&')
+
+    if conect_BD.is_connected():
+        cursor = conect_BD.cursor()
+        cursor.execute(f"delete from usuario where id='{usuarioID}';")
+        conect_BD.commit()
+    if  conect_BD.is_connected():
+        cursor.close()
+        conect_BD.close()
+
 
     flash(F'{nome}: Excluido com Sucesso!')
     return redirect('/adm')

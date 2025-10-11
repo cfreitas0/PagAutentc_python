@@ -53,7 +53,7 @@ def login():
         cursor = conect_BD.cursor()
         cursor.execute('select * from users;')
 
-        usuariosBD = cursor.fetchall
+        usuariosBD = cursor.fetchall()
 
         for usuario in usuariosBD:
             cont += 1

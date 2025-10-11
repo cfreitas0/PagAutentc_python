@@ -76,23 +76,18 @@ def login():
 @app.route('/cadastro_user', methods=['POST'])
 def cadastro_user():
     global logado
-    user = []
     nome = request.form.get('nome')
     senha = request.form.get('senha')
-    user = [
-        {
-            'nome': nome,
-            'senha': senha
-        }
-    ]
+    conect_BD = mysql.connector.connect(host='localhost', database='usuarios', user='root', password='9458Cf9590&')
 
-    with open('D:/proj_login/usuarios.json') as usuario_temporaria:
-        usuarios = json.load(usuario_temporaria)
+    if conect_BD.is_connected():
+        cursor = conect_BD.cursor()
+        cursor.execute(f"isert into users values (default, '{nome}','{senha}');")
 
-    novo_user = usuarios + user  
+    if conect_BD.is_connected():
+        cursor.close()
+        conect_BD.close()
 
-    with open('D:/proj_login/usuarios.json', 'w') as cadastro_temp:
-        json.dump(novo_user, cadastro_temp, indent=4)
     logado = True
     flash(F'{nome} Cadastrado com Sucesso!')
     return redirect('/adm')

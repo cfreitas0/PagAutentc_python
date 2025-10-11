@@ -83,8 +83,8 @@ def cadastro_user():
     if conect_BD.is_connected():
         cursor = conect_BD.cursor()
         cursor.execute(f"insert into users values (default, '{nome}','{senha}');")
-
-    if conect_BD.is_connected():
+        conect_BD.commit()
+    if  conect_BD.is_connected():
         cursor.close()
         conect_BD.close()
 

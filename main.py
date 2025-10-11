@@ -108,7 +108,7 @@ def delet_user():
 
     if conect_BD.is_connected():
         cursor = conect_BD.cursor()
-        cursor.execute(f"delete from usuario where id='usuarioID'; ")
+        cursor.execute(f"delete from usuario where id='usuarioID'")
         
     if  conect_BD.is_connected():
         cursor.close()
